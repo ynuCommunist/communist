@@ -43,9 +43,9 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
 
     @Override
     public void addUser(UserRolePermissions userRolePermissions) {
-        if(userRolePermissionsRepository.findById(userRolePermissions.getId()).isPresent()){
-            throw new RuntimeException("id已存在");
-        }
+//        if(userRolePermissionsRepository.findById(userRolePermissions.getId()).isPresent()){
+//            throw new RuntimeException("id已存在");
+//        }
         userRolePermissions.setId(String.valueOf((int)System.currentTimeMillis()) + String.valueOf((int)(Math.random()*9+1)*100));
         userRolePermissions.setPassword(MD5Util.MD5(userRolePermissions.getPassword(),userRolePermissions.getId()));
         userRolePermissionsRepository.save(userRolePermissions);
@@ -66,9 +66,6 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
     public Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String finding) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<UserRolePermissions> page = userRolePermissionsRepository.findAllByRole(finding,pageable);
-        if(!page.hasContent()){
-            throw new MyException(ResultEnum.ROLE_NOT_EXIST);
-        }
         return page;
     }
 

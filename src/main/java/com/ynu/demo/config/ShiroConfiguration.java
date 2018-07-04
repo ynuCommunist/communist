@@ -48,11 +48,11 @@ public class ShiroConfiguration {
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
 //        filterChainDefinitionMap.put("/index","sfaun");
-//        filterChainDefinitionMap.put("/login","anon");
+        filterChainDefinitionMap.put("/login","anon");
 ////        filterChainDefinitionMap.put("/admin/**","myAccessControlFilter[admin]");
 ////        filterChainDefinitionMap.put("/user/**","myAccessControlFilter[user,admin]");
-//        filterChainDefinitionMap.put("/admin/**","myAccessControlFilter[admin]");
-//        filterChainDefinitionMap.put("/user/**","myAccessControlFilter[user,admin]");
+        filterChainDefinitionMap.put("/admin/**","myAccessControlFilter[admin]");
+        filterChainDefinitionMap.put("/user/**","myAccessControlFilter[user,admin]");
 
 //        filterChainDefinitionMap.put("/admin/find/*","perms[find]");
 //        filterChainDefinitionMap.put("/admin/add/*","perms[add]");
@@ -125,7 +125,7 @@ public class ShiroConfiguration {
         //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
         SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
         //<!-- 记住我cookie生效时间30天 ,单位秒;-->
-        simpleCookie.setMaxAge(3000);
+        simpleCookie.setMaxAge(3000000);
         return simpleCookie;
     }
 
