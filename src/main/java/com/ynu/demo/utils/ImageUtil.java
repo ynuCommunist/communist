@@ -32,5 +32,6 @@ public class ImageUtil {
 
 //    public static MultipartFile getImg(String totalPath){
 //        MultipartFile multipartFile = ;
-//    }129879843456
+//    }129879843456123456789
+
 }
