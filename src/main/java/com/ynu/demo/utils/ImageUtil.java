@@ -30,8 +30,4 @@ public class ImageUtil {
         return totalPath;
     }
 
-//    public static MultipartFile getImg(String totalPath){
-//        MultipartFile multipartFile = ;
-//    }129879843456123456789ssss
-
 }

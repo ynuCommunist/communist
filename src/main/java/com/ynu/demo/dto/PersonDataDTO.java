@@ -1,7 +1,6 @@
 package com.ynu.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +27,6 @@ public class PersonDataDTO {
     private MultipartFile photo;
 
     /*性别（规定0为女性，1为男性）*/
-    @ApiModelProperty(value = "性别",name = "sex")
     private String sex;
 
     /*出生日期*/
@@ -127,5 +125,40 @@ public class PersonDataDTO {
     private Date updateTime;
 
     public PersonDataDTO() {
+    }
+
+    public PersonDataDTO(String id, String name, String city, MultipartFile photo, String sex, Date birthday, String nationality, String nation, String nativePlace, String marryStatus, Date timeForJoinCommunistParty, Date timeForBecomeFull, Date timeForWorking, String idCard, String whereBeforeJoinCommunistParty, String introducer, Date timeForJoinThis, String nameBeforeJoin, String nowIncumbentPosition, String academicDegree, String graduation, String currentCareer, String presentWorkingUnitsAndDuties, String registeredPermanentResidence, String familyAddress, String phone, String qq, String wechat, String familySituation, String applicationForTransferToContent, Date createTime, Date updateTime) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.photo = photo;
+        this.sex = sex;
+        this.birthday = birthday;
+        this.nationality = nationality;
+        this.nation = nation;
+        this.nativePlace = nativePlace;
+        this.marryStatus = marryStatus;
+        this.timeForJoinCommunistParty = timeForJoinCommunistParty;
+        this.timeForBecomeFull = timeForBecomeFull;
+        this.timeForWorking = timeForWorking;
+        this.idCard = idCard;
+        this.whereBeforeJoinCommunistParty = whereBeforeJoinCommunistParty;
+        this.introducer = introducer;
+        this.timeForJoinThis = timeForJoinThis;
+        this.nameBeforeJoin = nameBeforeJoin;
+        this.nowIncumbentPosition = nowIncumbentPosition;
+        this.academicDegree = academicDegree;
+        this.graduation = graduation;
+        this.currentCareer = currentCareer;
+        this.presentWorkingUnitsAndDuties = presentWorkingUnitsAndDuties;
+        this.registeredPermanentResidence = registeredPermanentResidence;
+        this.familyAddress = familyAddress;
+        this.phone = phone;
+        this.qq = qq;
+        this.wechat = wechat;
+        this.familySituation = familySituation;
+        ApplicationForTransferToContent = applicationForTransferToContent;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
     }
 }
