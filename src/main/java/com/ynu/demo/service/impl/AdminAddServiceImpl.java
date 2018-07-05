@@ -7,6 +7,7 @@ import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.FindRepository;
 import com.ynu.demo.service.AdminAddService;
 import com.ynu.demo.utils.ImageUtil;
+import com.ynu.demo.utils.KeyUtil;
 import com.ynu.demo.utils.TranferUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -40,7 +41,7 @@ public class AdminAddServiceImpl implements AdminAddService {
             //图片格式不对
             throw new MyException(ResultEnum.IMAGE_FORM_ERROR);
         }
-        personDataDTO.setId(String.valueOf((int)System.currentTimeMillis()) + String.valueOf((int)(Math.random()*9+1)*100));
+        personDataDTO.setId(KeyUtil.getUniqueKey());
 
         PersonData personData = TranferUtils.changeToPersonData(personDataDTO);
         return findRepository.save(personData);

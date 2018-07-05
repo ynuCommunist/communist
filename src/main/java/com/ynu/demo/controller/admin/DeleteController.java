@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date: Created in 12:24 2018/6/26
  */
 @RestController
-@RequestMapping("/admin/del/")
+@RequestMapping("/admin/del")
 @Api(description = "管理员删除党员信息接口")
 public class DeleteController {
 
@@ -23,8 +23,8 @@ public class DeleteController {
     private AdminDelService adminDelService;
 
     @ApiOperation(value = "通过ID删除一个党员")
-    @PostMapping("delById")
-    public ReturnResult delById(@RequestParam("id") Integer id){
+    @PostMapping("/delById")
+    public ReturnResult delById(@RequestParam("id") String id){
         adminDelService.delById(id);
         return ReturnResultUtil.success();
     }
