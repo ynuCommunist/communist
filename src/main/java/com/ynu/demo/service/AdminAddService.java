@@ -12,5 +12,5 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface AdminAddService {
 
-    PersonData add(PersonData personData,MultipartFile multipartFile);
+    PersonData add(PersonDataDTO personDataDTO);
 }

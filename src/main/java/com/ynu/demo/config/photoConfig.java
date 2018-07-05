@@ -1,5 +1,6 @@
 package com.ynu.demo.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,18 +17,15 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 public class photoConfig implements WebMvcConfigurer {
 
-    /**
-     * 在配置文件中配置的文件保存路径
-     */
-//    @Value("${banner.image.location}")
-//    private String location = "./demo/src/resources/photo";
-
-    private static String localUrl = "file:C:\\Users\\10049\\Desktop\\item\\demo\\src\\main\\resources\\photo\\";
+    public static String ImageResources;
+    @Value("${ImageResources}")
+    public void setImageResources(String imageResources){
+        ImageResources = imageResources;
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //上传的图片在D盘下的OTA目录下，访问路径如：http://localhost:8081/OTA/d3cf0281-bb7f-40e0-ab77-406db95ccf2c.jpg
-        registry.addResourceHandler("/image/**").addResourceLocations(localUrl);
+        registry.addResourceHandler("/image/**").addResourceLocations(ImageResources);
     }
 
     @Bean
