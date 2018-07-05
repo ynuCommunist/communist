@@ -1,5 +1,6 @@
 package com.ynu.demo.controller.admin;
 
+import com.ynu.demo.dto.PersonDataDTO;
 import com.ynu.demo.entity.PersonData;
 import com.ynu.demo.result.ReturnResult;
 import com.ynu.demo.service.AdminUpdService;
@@ -24,9 +25,9 @@ public class UpdateController {
 
     @ApiOperation(value = "更新党员")
     @PostMapping("/update")
-    public ReturnResult add(@RequestBody PersonData personData){
+    public ReturnResult add(PersonDataDTO personDataDTO){
 
-        adminUpdService.update(personData);
+        adminUpdService.update(personDataDTO);
 
         return ReturnResultUtil.success();
     }
