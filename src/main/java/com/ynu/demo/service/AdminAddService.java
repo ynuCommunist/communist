@@ -1,6 +1,9 @@
 package com.ynu.demo.service;
 
+import com.ynu.demo.dto.PersonDataDTO;
 import com.ynu.demo.entity.PersonData;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @Author: IceSource and QW
@@ -9,5 +12,5 @@ import com.ynu.demo.entity.PersonData;
  */
 public interface AdminAddService {
 
-    PersonData add(PersonData personData);
+    PersonData add(PersonData personData,MultipartFile multipartFile);
 }
