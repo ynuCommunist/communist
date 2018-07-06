@@ -59,9 +59,11 @@ public enum ResultEnum {
 
     ID_NOT_CHANGE(60000,"ID不可更改"),
 
-    JSON_ERROR(60001,"JSON创建失败")
+    JSON_ERROR(60001,"JSON创建失败"),
 
+    IMAGE_ERROR(70000,"图片为空"),
 
+    IMAGE_FORM_ERROR(70000,"图片格式错误"),
 
 //    NO_AUTHORITY(3,"没有权限"),
 

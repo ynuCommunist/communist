@@ -10,9 +10,9 @@ import java.util.List;
  * @Description:
  * @Date: Created in 16:17 2018/6/26
  */
-public interface DelRepository extends JpaRepository<PersonData,Integer> {
+public interface DelRepository extends JpaRepository<PersonData,String> {
     /*通过id删除*/
-    void deleteById(Integer id);
+    void deleteById(String id);
     /*通过id删除多条信息*/
     void deleteByIdIn(List<Integer> id);
 }

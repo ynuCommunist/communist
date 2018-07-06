@@ -1,5 +1,6 @@
 package com.ynu.demo.service;
 
+import com.ynu.demo.dto.PersonDataDTO;
 import com.ynu.demo.entity.PersonData;
 
 /**
@@ -9,5 +10,5 @@ import com.ynu.demo.entity.PersonData;
  */
 public interface AdminUpdService {
 
-    void update(PersonData personData);
+    void update(PersonDataDTO personDataDTO);
 }

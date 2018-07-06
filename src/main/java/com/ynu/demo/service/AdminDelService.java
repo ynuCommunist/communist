@@ -7,5 +7,5 @@ package com.ynu.demo.service;
  */
 public interface AdminDelService {
 
-    void delById(Integer id);
+    void delById(String id);
 }

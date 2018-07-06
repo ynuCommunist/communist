@@ -26,23 +26,10 @@ public class AddController {
     private AdminAddService adminAddService;
 
     @ApiOperation(value = "添加一个党员")
-    @PutMapping("/addOne")
-    public ReturnResult add(PersonData personData){
-
-        log.info(personData.getName());
-
-//        adminAddService.add(personData);
-
+    @PostMapping("/addOne")
+    public ReturnResult add(PersonDataDTO personData){
+        adminAddService.add(personData);
         return ReturnResultUtil.success();
     }
 
-    @ApiOperation(value = "添加一个党员Test")
-    @PostMapping("/addOneTest")
-    public ReturnResult add(PersonDataDTO personData){
-        System.out.println(personData.getPhoto().getSize());
-        System.out.println(personData.getName());
-//        adminAddService.add(personData,multipartFile);
-//        log.info("id:"+personDataDTO.getId());
-        return ReturnResultUtil.success(personData.getName());
-    }
 }

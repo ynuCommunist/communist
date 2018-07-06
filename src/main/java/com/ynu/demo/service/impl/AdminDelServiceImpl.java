@@ -4,7 +4,10 @@ import com.ynu.demo.repository.DelRepository;
 import com.ynu.demo.service.AdminDelService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
 
 /**
  * @Author: IceSource and QW
@@ -15,11 +18,17 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class AdminDelServiceImpl implements AdminDelService {
 
+    @Value("${ImageLocation}")
+    private String ImageLocation;
+
+
     @Autowired
     private DelRepository delRepository;
 
     @Override
-    public void delById(Integer id) {
+    public void delById(String id) {
         delRepository.deleteById(id);
+        File file = new File(ImageLocation+id+".png");
+        file.delete();
     }
 }
