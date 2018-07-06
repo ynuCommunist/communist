@@ -25,10 +25,10 @@ public class FindController {
     private AdminFindService adminFindService;
 
     @ApiOperation(value = "查找所有党员")
-    @PostMapping("/findall")
+    @GetMapping("/findall")
     public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
                                 @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam(name = "finding") String finding,
+                                @RequestParam(name = "finding",defaultValue = "",required = false) String finding,
                                 @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                 @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
 
@@ -70,7 +70,7 @@ public class FindController {
         return ReturnResultUtil.success(adminFindService.findAllGroupByCity());
     }
 
-    @PostMapping("/findBySex")
+    @GetMapping("/findBySex")
     @ApiOperation(value = "通过性别查找党员")
     public ReturnResult findBySex(@RequestParam("pageNum") Integer pageNum,
                                   @RequestParam("pageSize") Integer pageSize,
