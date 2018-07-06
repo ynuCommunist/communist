@@ -28,6 +28,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void addNews(News news) {
+
         newsRepository.save(news);
     }
 

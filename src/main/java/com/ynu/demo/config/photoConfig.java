@@ -23,9 +23,16 @@ public class photoConfig implements WebMvcConfigurer {
         ImageResources = imageResources;
     }
 
+    public static String NewsImageResources;
+    @Value("${NewsImageResources}")
+    public void setNewsImageResources(String newsImageResources){
+        NewsImageResources = newsImageResources;
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**").addResourceLocations(ImageResources);
+        registry.addResourceHandler("/PersonImage/**").addResourceLocations(ImageResources);
+        registry.addResourceHandler("/NewsImage/**").addResourceLocations(NewsImageResources);
     }
 
     @Bean
@@ -34,7 +41,7 @@ public class photoConfig implements WebMvcConfigurer {
         //文件最大KB,MB
         factory.setMaxFileSize("10MB");
         //设置总上传数据总大小
-        factory.setMaxRequestSize("15MB");
+        factory.setMaxRequestSize("30MB");
         return factory.createMultipartConfig();
     }
 }

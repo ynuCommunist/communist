@@ -1,7 +1,9 @@
 package com.ynu.demo.utils;
 
+import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.dto.PersonDataDTO;
 import com.ynu.demo.entity.PersonData;
+import com.ynu.demo.exception.MyException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,7 +42,7 @@ public class TranferUtils {
         try {
             personData.setPhoto(ImageUtil.saveImg(personDataDTO.getPhoto(),personDataDTO.getId()));
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new MyException(ResultEnum.ERROR);
         }
         return personData;
     }

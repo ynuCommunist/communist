@@ -25,15 +25,14 @@ public class FindController {
     private AdminFindService adminFindService;
 
     @ApiOperation(value = "查找所有党员")
-    @GetMapping("/findall")
+    @PostMapping("/findall")
     public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
                                 @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam(name = "title", defaultValue = "null") String title,
-                                @RequestParam(name = "city", defaultValue = "null") String city,
+                                @RequestParam(name = "finding") String finding,
                                 @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                 @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
 
-        return ReturnResultUtil.success(adminFindService.getList(pageNum-1, pageSize, title, city, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getList(pageNum-1, pageSize, finding, sort, sortBy));
     }
 
     @ApiOperation(value = "通过ID查找党员")

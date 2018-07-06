@@ -5,6 +5,7 @@ import com.ynu.demo.entity.UserRolePermissions;
 import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.UserRolePermissionsRepository;
 import com.ynu.demo.service.UserRolePermissionsService;
+import com.ynu.demo.utils.KeyUtil;
 import com.ynu.demo.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,20 +34,12 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
 
     @Override
     public void updateUser(UserRolePermissions userRolePermissions) {
-        if(userRolePermissionsRepository.findById(userRolePermissions.getId()).isPresent()){
-            userRolePermissions.setPassword(MD5Util.MD5(userRolePermissions.getPassword(),userRolePermissions.getId()));
-            userRolePermissionsRepository.save(userRolePermissions);
-        }else {
-            throw new MyException(ResultEnum.ID_NOT_CHANGE);
-        }
+        userRolePermissionsRepository.save(userRolePermissions);
     }
 
     @Override
     public void addUser(UserRolePermissions userRolePermissions) {
-        if(userRolePermissionsRepository.findById(userRolePermissions.getId()).isPresent()){
-            throw new RuntimeException("id已存在");
-        }
-        userRolePermissions.setId(String.valueOf((int)System.currentTimeMillis()) + String.valueOf((int)(Math.random()*9+1)*100));
+        userRolePermissions.setId(KeyUtil.getUniqueKey());
         userRolePermissions.setPassword(MD5Util.MD5(userRolePermissions.getPassword(),userRolePermissions.getId()));
         userRolePermissionsRepository.save(userRolePermissions);
     }

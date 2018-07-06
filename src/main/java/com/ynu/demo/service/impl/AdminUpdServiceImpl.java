@@ -1,7 +1,9 @@
 package com.ynu.demo.service.impl;
 
+import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.dto.PersonDataDTO;
 import com.ynu.demo.entity.PersonData;
+import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.AddRepository;
 import com.ynu.demo.repository.DelRepository;
 import com.ynu.demo.service.AdminUpdService;
@@ -37,7 +39,7 @@ public class AdminUpdServiceImpl implements AdminUpdService {
             try {
                 personData.setPhoto(ImageUtil.saveImg(personDataDTO.getPhoto(),personDataDTO.getId()));
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new MyException(ResultEnum.ERROR);
             }
         }else {
             /*不更新图片 保存原来图片存储位置*/

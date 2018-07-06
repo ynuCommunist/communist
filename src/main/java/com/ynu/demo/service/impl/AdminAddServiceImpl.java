@@ -42,7 +42,6 @@ public class AdminAddServiceImpl implements AdminAddService {
             throw new MyException(ResultEnum.IMAGE_FORM_ERROR);
         }
         personDataDTO.setId(KeyUtil.getUniqueKey());
-
         PersonData personData = TranferUtils.changeToPersonData(personDataDTO);
         return findRepository.save(personData);
     }

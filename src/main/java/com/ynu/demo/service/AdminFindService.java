@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
  */
 public interface AdminFindService {
     /*查找全部*/
-    Page<PersonData> getList(Integer pageNum, Integer pageSize, String title, String city, String sort ,String sortBy);
+    Page<PersonData> getList(Integer pageNum, Integer pageSize, String finding, String sort ,String sortBy);
 
     /*根据ID查找*/
     PersonData getById(String finding);
