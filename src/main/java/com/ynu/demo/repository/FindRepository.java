@@ -25,6 +25,8 @@ public interface FindRepository extends JpaRepository<PersonData,String> {
     /*通过当前所在城市模糊查询返回分组信息*/
     Page<PersonData> queryByCityLike(String name, Pageable pageable);
 
+    Page<PersonData> findDistinctByNameLikeOrCityLikeOrNationalityLike(String finding1,String finding2,String finding3,Pageable pageable);
+
     /*通过性别精确查询*/
     Page<PersonData> findBySex(String sex, Pageable pageable);
 

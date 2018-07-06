@@ -1,8 +1,12 @@
 package com.ynu.demo.controller.admin;
 
+import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.entity.News;
+import com.ynu.demo.exception.MyException;
+import com.ynu.demo.repository.NewsRepository;
 import com.ynu.demo.result.ReturnResult;
 import com.ynu.demo.service.NewsService;
+import com.ynu.demo.utils.ImageUtil;
 import com.ynu.demo.utils.ReturnResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,8 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: IceSource and QW
@@ -26,9 +34,24 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
+    @Autowired
+    private NewsRepository repository;
+
     @ApiOperation(value = "添加新闻")
     @PostMapping("/addOne")
-    public ReturnResult addNews(News news) {
+    public ReturnResult addNews(@RequestParam("files")MultipartFile[] files) {
+        List<String> urls = new ArrayList<>();
+        log.info(String.valueOf(files.length));
+        if (files.length == 0){
+            throw new MyException(ResultEnum.ERROR);
+        }
+
+
+        try {
+            ImageUtil.saveImgs(files,"test");
+        } catch (IOException e) {
+            throw new MyException(ResultEnum.ERROR);
+        }
         return null;
     }
 
