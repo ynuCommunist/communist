@@ -9,6 +9,7 @@ import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.exception.MyException;
 import com.ynu.demo.result.ReturnResult;
 import com.ynu.demo.utils.ReturnResultUtil;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.StringUtils;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
@@ -28,8 +29,9 @@ public class CustomRolesAuthorizationFilter extends AuthorizationFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest req, ServletResponse resp, Object mappedValue) {
-        Subject subject = getSubject(req, resp);
+        Subject subject = SecurityUtils.getSubject();
         String[] rolesArray = (String[]) mappedValue;
+
 
         if (rolesArray == null || rolesArray.length == 0) { //没有角色限制，有权限访问
             return true;
@@ -67,7 +69,7 @@ public class CustomRolesAuthorizationFilter extends AuthorizationFilter {
         }
         JSONObject result = new JSONObject();
 
-        Subject subject = this.getSubject(request, response);
+        Subject subject =SecurityUtils.getSubject();
         try{
             if (subject.getPrincipal() == null) {
                 result.put("msg", "未登录，请重新登陆");

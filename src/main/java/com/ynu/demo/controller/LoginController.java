@@ -80,6 +80,9 @@ public class LoginController {
             return ReturnResultUtil.error(ResultEnum.LOGIN_FAIL);
         }
         UserRolePermissions userRolePermissions = (UserRolePermissions) subject.getPrincipal();
+//        if(userRolePermissions==null){
+//            return ReturnResultUtil.error(ResultEnum.NOT_LOGIN);
+//        }
         String name = userRolePermissions.getUsername();
         String[] roles = {userRolePermissions.getRole()};
         String[] permissions = TranferUtils.ArrayToString(userRolePermissions.getPermissions());

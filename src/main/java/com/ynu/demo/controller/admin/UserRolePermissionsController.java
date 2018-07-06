@@ -35,7 +35,15 @@ public class UserRolePermissionsController {
 
     @ApiOperation(value = "添加用户")
     @PostMapping("/addOneUser")
-    public ReturnResult addUser(UserRolePermissions userRolePermissions){
+    public ReturnResult addUser(@RequestParam("username") String username,
+                                @RequestParam("password") String password,
+                                @RequestParam("role") String role,
+                                @RequestParam(value = "permissions",required = false,defaultValue = "") String permissions){
+        UserRolePermissions userRolePermissions = new UserRolePermissions();
+        userRolePermissions.setPermissions(permissions);
+        userRolePermissions.setPassword(password);
+        userRolePermissions.setRole(role);
+        userRolePermissions.setUsername(username);
         userRolePermissionsService.addUser(userRolePermissions);
         return ReturnResultUtil.success();
     }

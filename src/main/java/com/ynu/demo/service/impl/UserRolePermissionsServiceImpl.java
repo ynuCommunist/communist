@@ -59,9 +59,6 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
     public Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String finding) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<UserRolePermissions> page = userRolePermissionsRepository.findAllByRole(finding,pageable);
-        if(!page.hasContent()){
-            throw new MyException(ResultEnum.ROLE_NOT_EXIST);
-        }
         return page;
     }
 

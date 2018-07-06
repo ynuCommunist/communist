@@ -31,4 +31,5 @@ public class AddController {
         adminAddService.add(personData);
         return ReturnResultUtil.success();
     }
+
 }
