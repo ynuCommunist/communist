@@ -1,28 +1,16 @@
 package com.ynu.demo.controller.admin;
 
-import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.dto.NewsDTO;
 import com.ynu.demo.entity.News;
-import com.ynu.demo.exception.MyException;
-import com.ynu.demo.repository.NewsRepository;
 import com.ynu.demo.result.ReturnResult;
 import com.ynu.demo.service.NewsService;
-import com.ynu.demo.utils.ImageUtil;
 import com.ynu.demo.utils.ReturnResultUtil;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @Author: IceSource and QW
@@ -47,14 +35,14 @@ public class NewsController {
     @ApiOperation(value = "删除新闻")
     @PostMapping("/delOne")
     public ReturnResult delNews(@RequestParam("id") String id) {
-        newsService.del(id);
+        newsService.delNews(id);
         return ReturnResultUtil.success();
     }
 
     @ApiOperation(value = "更新新闻")
     @PostMapping("/updOne")
     public ReturnResult updNews(NewsDTO newsDTO) {
-//        newsService.addNews(news);
+        newsService.updNews(newsDTO);
         return ReturnResultUtil.success();
     }
 
@@ -105,7 +93,7 @@ public class NewsController {
                                               @RequestParam("finding") String finding,
                                               @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                               @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        Page<News> page = newsService.findByPublicationTime(pageNum-1, pageSize, finding+"%", sort, sortBy);
+        Page<News> page = newsService.findByPublicationTime(pageNum-1, pageSize, finding, sort, sortBy);
         return ReturnResultUtil.success(page);
     }
 }

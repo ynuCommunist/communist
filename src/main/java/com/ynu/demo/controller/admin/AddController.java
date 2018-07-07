@@ -28,7 +28,6 @@ public class AddController {
     private AdminAddService adminAddService;
 
     @ApiOperation(value = "添加一个党员")
-    @ApiImplicitParam(required = true, paramType = "form")
     @PostMapping("/addOne")
     public ReturnResult add(PersonDataDTO personDataDTO){
         adminAddService.add(personDataDTO);
