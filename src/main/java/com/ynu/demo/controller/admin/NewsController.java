@@ -1,6 +1,7 @@
 package com.ynu.demo.controller.admin;
 
 import com.ynu.demo.Enum.ResultEnum;
+import com.ynu.demo.dto.NewsDTO;
 import com.ynu.demo.entity.News;
 import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.NewsRepository;
@@ -9,6 +10,8 @@ import com.ynu.demo.service.NewsService;
 import com.ynu.demo.utils.ImageUtil;
 import com.ynu.demo.utils.ReturnResultUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,33 +37,32 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
 
-    @Autowired
-    private NewsRepository repository;
-
     @ApiOperation(value = "添加新闻")
     @PostMapping("/addOne")
-    public ReturnResult addNews() {
-
-        return null;
+    public ReturnResult addNews(NewsDTO newsDTO) {
+        newsService.addNews(newsDTO);
+        return ReturnResultUtil.success();
     }
 
     @ApiOperation(value = "删除新闻")
     @PostMapping("/delOne")
     public ReturnResult delNews(@RequestParam("id") String id) {
-        return null;
+        newsService.del(id);
+        return ReturnResultUtil.success();
     }
 
     @ApiOperation(value = "更新新闻")
     @PostMapping("/updOne")
-    public ReturnResult updNews(News news) {
-        return null;
+    public ReturnResult updNews(NewsDTO newsDTO) {
+//        newsService.addNews(news);
+        return ReturnResultUtil.success();
     }
 
     @ApiOperation(value = "查找所有新闻")
     @GetMapping("/findAll")
     public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
                                 @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam(name = "title",defaultValue = "",required = false) String title,
+                                @RequestParam(name = "title",required = false) String title,
                                 @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                 @RequestParam(name = "sortBy", defaultValue = "publicationTime") String sortBy) {
         Page<News> page = newsService.findAll(pageNum-1,pageSize,title,sort,sortBy);
@@ -81,7 +83,7 @@ public class NewsController {
                                     @RequestParam("finding") String finding,
                                     @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                     @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        Page<News> page = newsService.findByTitle(pageNum, pageSize, finding, sort, sortBy);
+        Page<News> page = newsService.findByTitle(pageNum-1, pageSize, finding, sort, sortBy);
         return ReturnResultUtil.success(page);
     }
 
@@ -92,7 +94,7 @@ public class NewsController {
                                      @RequestParam("finding") String finding,
                                      @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                      @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        Page<News> page = newsService.findByAuthor(pageNum, pageSize, finding, sort, sortBy);
+        Page<News> page = newsService.findByAuthor(pageNum-1, pageSize, finding, sort, sortBy);
         return ReturnResultUtil.success(page);
     }
 

@@ -6,6 +6,8 @@ import com.ynu.demo.result.ReturnResult;
 import com.ynu.demo.service.AdminAddService;
 import com.ynu.demo.utils.ReturnResultUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +28,10 @@ public class AddController {
     private AdminAddService adminAddService;
 
     @ApiOperation(value = "添加一个党员")
+    @ApiImplicitParam(required = true, paramType = "form")
     @PostMapping("/addOne")
-    public ReturnResult add(PersonDataDTO personData){
-        adminAddService.add(personData);
+    public ReturnResult add(PersonDataDTO personDataDTO){
+        adminAddService.add(personDataDTO);
         return ReturnResultUtil.success();
     }
 

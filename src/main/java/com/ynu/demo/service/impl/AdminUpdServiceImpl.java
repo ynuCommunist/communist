@@ -33,18 +33,22 @@ public class AdminUpdServiceImpl implements AdminUpdService {
     public void update(PersonDataDTO personDataDTO) {
         MultipartFile multipartFile = personDataDTO.getPhoto();
         PersonData personData = new PersonData();
+        BeanUtils.copyProperties(personDataDTO,personData);
         if(multipartFile != null){
             /*更新图片 直接覆盖原图片*/
-            BeanUtils.copyProperties(personDataDTO,personData);
+            String contentType = multipartFile.getContentType();
+            if (!contentType.contains("jpeg") && !contentType.contains("jpg") && !contentType.contains("png")) {
+                //图片格式不对
+                throw new MyException(ResultEnum.IMAGE_FORM_ERROR);
+            }
             try {
-                personData.setPhoto(ImageUtil.saveImg(personDataDTO.getPhoto(),personDataDTO.getId()));
+                personData.setPhoto(ImageUtil.savePersonImage(personDataDTO.getPhoto(),personDataDTO.getId()));
             } catch (IOException e) {
                 throw new MyException(ResultEnum.ERROR);
             }
         }else {
             /*不更新图片 保存原来图片存储位置*/
             String photo = addRepository.findById(personDataDTO.getId()).get().getPhoto();
-            BeanUtils.copyProperties(personDataDTO,personData);
             personData.setPhoto(photo);
         }
 

@@ -35,10 +35,10 @@ public class ImageController {
 
     @PostMapping("/addImage")
     @ApiOperation(value = "添加图片")
-    public ReturnResult uploadImage(@RequestParam("image") MultipartFile multipartFile){
+    public ReturnResult uploadImage(@RequestParam("setHomepageImage") MultipartFile multipartFile){
         String HttpPath;
         try {
-            HttpPath = ImageUtil.saveImg(multipartFile);
+            HttpPath = ImageUtil.saveNewsImage(multipartFile);
         } catch (IOException e) {
             throw new MyException(ResultEnum.ERROR);
         }

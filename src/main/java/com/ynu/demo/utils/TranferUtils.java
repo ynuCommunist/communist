@@ -1,7 +1,9 @@
 package com.ynu.demo.utils;
 
 import com.ynu.demo.Enum.ResultEnum;
+import com.ynu.demo.dto.NewsDTO;
 import com.ynu.demo.dto.PersonDataDTO;
+import com.ynu.demo.entity.News;
 import com.ynu.demo.entity.PersonData;
 import com.ynu.demo.exception.MyException;
 import org.springframework.beans.BeanUtils;
@@ -29,21 +31,25 @@ public class TranferUtils {
         return result;
     }
 
-    public static PersonDataDTO changeToPersonDataDTO(PersonData personData){
-        PersonDataDTO personDataDTO = new PersonDataDTO();
-        BeanUtils.copyProperties(personData,personDataDTO);
-//        personDataDTO.setPhoto();
-        return personDataDTO;
-    }
-
     public static PersonData changeToPersonData(PersonDataDTO personDataDTO){
         PersonData personData = new PersonData();
         BeanUtils.copyProperties(personDataDTO,personData);
         try {
-            personData.setPhoto(ImageUtil.saveImg(personDataDTO.getPhoto(),personDataDTO.getId()));
+            personData.setPhoto(ImageUtil.savePersonImage(personDataDTO.getPhoto(),personDataDTO.getId()));
         } catch (IOException e) {
             throw new MyException(ResultEnum.ERROR);
         }
         return personData;
+    }
+
+    public static News changeToNews(NewsDTO newsDTO){
+        News news = new News();
+        BeanUtils.copyProperties(newsDTO,news);
+        try {
+            news.setHomepageImage(ImageUtil.saveNewsImage(newsDTO.getHomepageImage(),newsDTO.getId()));
+        } catch (IOException e) {
+            throw new MyException(ResultEnum.ERROR);
+        }
+        return news;
     }
 }

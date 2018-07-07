@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * @Author: IceSource and QW
@@ -12,7 +13,7 @@ import javax.persistence.Id;
  */
 @Entity
 @Data
-public class UserRolePermissions {
+public class UserRolePermissions implements Serializable {
     @Id
     private String id;
 

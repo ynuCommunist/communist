@@ -42,7 +42,7 @@ public class ImageUtil {
         NewsImageLocation = newsImageLocation;
     }
 
-    public static String saveImg(MultipartFile multipartFile, String fileName) throws IOException {
+    public static String savePersonImage(MultipartFile multipartFile, String fileName) throws IOException {
         String totalPath = ImageLocation + fileName + ".png";
         String HttpPath = ImageUrl + fileName + ".png";
         log.info("图片存储地址:" + totalPath);
@@ -83,10 +83,26 @@ public class ImageUtil {
         return allHttpPath;
     }
 
-    public static String saveImg(MultipartFile multipartFile) throws IOException {
+    public static String saveNewsImage(MultipartFile multipartFile) throws IOException {
         String key = KeyUtil.getUniqueKey();
         String totalPath = NewsImageLocation + key + ".png";
         String HttpPath = NewsImageUrl + key + ".png";
+        log.info("图片存储地址:" + totalPath);
+        FileInputStream fileInputStream = (FileInputStream) multipartFile.getInputStream();
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(totalPath));
+        byte[] bs = new byte[1024];
+        int len;
+        while ((len = fileInputStream.read(bs)) != -1) {
+            bos.write(bs, 0, len);
+        }
+        bos.flush();
+        bos.close();
+        return HttpPath;
+    }
+
+    public static String saveNewsImage(MultipartFile multipartFile, String fileName) throws IOException {
+        String totalPath = NewsImageLocation +"HomepageImage\\"+ fileName + ".png";
+        String HttpPath = NewsImageUrl +"HomepageImage/"+ fileName + ".png";
         log.info("图片存储地址:" + totalPath);
         FileInputStream fileInputStream = (FileInputStream) multipartFile.getInputStream();
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(totalPath));
