@@ -35,7 +35,7 @@ public class AdminFindServiceImpl implements AdminFindService {
     public Page<PersonData> getList(Integer pageNum, Integer pageSize, String finding,String sort, String sortBy) {
         Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
         Page<PersonData> page;
-        if(finding.equals("")){
+        if(finding==null){
             page = findRepository.findAll(pageable);
         }else {
             finding = "%"+finding+"%";
