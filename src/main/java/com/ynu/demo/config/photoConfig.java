@@ -33,6 +33,7 @@ public class photoConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/PersonImage/**").addResourceLocations(ImageResources);
         registry.addResourceHandler("/NewsImage/**").addResourceLocations(NewsImageResources);
+        registry.addResourceHandler("/NewsImage/HomepagePicture/**").addResourceLocations(NewsImageResources+"HomepagePicture\\");
     }
 
     @Bean

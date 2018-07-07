@@ -15,3 +15,6 @@ ImageLocation: .\src\main\resources\PersonImage\
 NewsImageUrl: http://localhost:8080/NewsImage/
 NewsImageResources: file:C:\Users\10049\Desktop\item\demo\src\main\resources\NewsImage\
 NewsImageLocation: .\src\main\resources\NewsImage\
+
+HomepageImage: HomepageImage\
+
