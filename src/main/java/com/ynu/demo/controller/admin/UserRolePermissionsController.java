@@ -27,7 +27,7 @@ public class UserRolePermissionsController {
     private UserRolePermissionsService userRolePermissionsService;
 
     @ApiOperation(value = "得到所有用户")
-    @PostMapping("/getAll")
+    @GetMapping("/getAll")
     public ReturnResult getAll(Integer pageNum, Integer pageSize){
         Page<UserRolePermissions> page = userRolePermissionsService.getList(pageNum-1,pageSize);
         return ReturnResultUtil.success(page);

@@ -70,7 +70,7 @@ public class FindController {
         return ReturnResultUtil.success(adminFindService.findAllGroupByCity());
     }
 
-    @PostMapping("/findBySex")
+    @GetMapping("/findBySex")
     @ApiOperation(value = "通过性别查找党员")
     public ReturnResult findBySex(@RequestParam("pageNum") Integer pageNum,
                                   @RequestParam("pageSize") Integer pageSize,

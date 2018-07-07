@@ -56,7 +56,7 @@ public class NewsController {
     }
 
     @ApiOperation(value = "删除新闻")
-    @GetMapping("/delOne")
+    @PostMapping("/delOne")
     public ReturnResult delNews(@RequestParam("id") String id) {
         return null;
     }

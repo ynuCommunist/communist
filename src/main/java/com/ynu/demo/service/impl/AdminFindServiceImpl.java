@@ -34,9 +34,14 @@ public class AdminFindServiceImpl implements AdminFindService {
     @Override
     public Page<PersonData> getList(Integer pageNum, Integer pageSize, String finding,String sort, String sortBy) {
         Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
-        finding = "%"+finding+"%";
-        Page<PersonData> page = findRepository.findDistinctByNameLikeOrCityLikeOrNationalityLike(finding,finding,finding,pageable);;
+        Page<PersonData> page;
+        if(finding.equals("")){
+            page = findRepository.findAll(pageable);
+        }else {
+            finding = "%"+finding+"%";
+            page = findRepository.findDistinctByNameLikeOrCityLikeOrNationalityLike(finding,finding,finding,pageable);;
 
+        }
         if (!page.hasContent()){
             throw new MyException(ResultEnum.ERROR);
         }
