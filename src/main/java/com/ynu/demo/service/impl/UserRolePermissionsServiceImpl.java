@@ -29,12 +29,29 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
     public Page<UserRolePermissions> getList(Integer pageNum, Integer pageSize) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<UserRolePermissions> page = userRolePermissionsRepository.findAll(pageable);
+        for (int i = 0; i < page.getTotalElements(); i++) {
+            page.getContent().get(i).setPassword("");
+        }
         return page;
     }
 
     @Override
     public void updateUser(UserRolePermissions userRolePermissions) {
-        userRolePermissionsRepository.save(userRolePermissions);
+        UserRolePermissions temp = userRolePermissionsRepository.findById(userRolePermissions.getId()).get();
+        if(temp.getRole().equals("admin")){
+            throw new MyException(ResultEnum.ADMIN_NOT_UPDATE);
+        }
+        if(userRolePermissions.getUsername()!=null){
+            temp.setUsername(userRolePermissions.getUsername());
+        }
+        if(userRolePermissions.getPassword()!=null){
+            String password = userRolePermissions.getPassword();
+            temp.setPassword(MD5Util.MD5(password,userRolePermissions.getId()));
+        }
+        if (userRolePermissions.getRole()!=null){
+            temp.setRole(userRolePermissions.getRole());
+        }
+        userRolePermissionsRepository.save(temp);
     }
 
     @Override
@@ -59,6 +76,9 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
     public Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String finding) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
         Page<UserRolePermissions> page = userRolePermissionsRepository.findAllByRole(finding,pageable);
+        for (int i = 0; i < page.getTotalElements(); i++) {
+            page.getContent().get(i).setPassword("");
+        }
         return page;
     }
 
