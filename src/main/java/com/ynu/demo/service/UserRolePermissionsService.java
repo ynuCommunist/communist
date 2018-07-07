@@ -24,7 +24,7 @@ public interface UserRolePermissionsService {
     void deleteUser(String id);
 
     /*根据角色查找所有用户*/
-    Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String finding);
+    Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String title,String finding);
 
 
 }

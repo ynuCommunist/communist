@@ -12,5 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface UserRolePermissionsRepository extends JpaRepository<UserRolePermissions,String> {
 
-    Page<UserRolePermissions> findAllByRole(String role , Pageable pageable);
+    Page<UserRolePermissions> findAllByUsernameLikeAndRoleIs(String title, String role,Pageable pageable);
+
+
 }

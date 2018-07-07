@@ -73,7 +73,7 @@ public class NewsServiceImpl implements NewsService {
                 throw new MyException(ResultEnum.ERROR);
             }
         }
-
+        news.setReadingVolume(0);
         newsRepository.save(news);
     }
 
@@ -118,7 +118,7 @@ public class NewsServiceImpl implements NewsService {
         if(title == null){
             page = newsRepository.findAll(pageable);
         }else {
-            page = newsRepository.findByTitleLikeOrContentLike("%"+title+"%","%"+title+"%",pageable);
+            page = newsRepository.findByTitleLikeOrContentLikeOrSummaryLike("%"+title+"%","%"+title+"%","%"+title+"%",pageable);
         }
         return page;
     }
@@ -130,6 +130,7 @@ public class NewsServiceImpl implements NewsService {
             throw new MyException(ResultEnum.ERROR);
         }
         News news = optionalNews.get();
+        news.setReadingVolume(news.getReadingVolume()+1);
         return news;
     }
 
