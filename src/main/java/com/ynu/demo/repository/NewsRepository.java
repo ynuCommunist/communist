@@ -30,7 +30,7 @@ public interface NewsRepository extends JpaRepository<News,String> {
 
     Page<News> findAll(Pageable pageable);
 
-    Page<News> findByTitleLikeOrContentLike(String str1, String str2 , Pageable pageable);
+    Page<News> findByTitleLikeOrContentLikeOrSummaryLike(String str1, String str2 , String str3,Pageable pageable);
 
     Page<News> findByTitleLike(String title ,Pageable pageable);
 

@@ -65,8 +65,11 @@ public class UserRolePermissionsController {
 
     @ApiOperation(value = "根据角色查找用户")
     @GetMapping("/findAllUser")
-    public ReturnResult findAllByRole(Integer pageNum, Integer pageSize, String role){
-        Page<UserRolePermissions> page = userRolePermissionsService.findAllByRole(pageNum-1,pageSize,role);
+    public ReturnResult findAllByRole(@RequestParam("pageNum") Integer pageNum,
+                                      @RequestParam("pageSize") Integer pageSize,
+                                      @RequestParam(value = "title",required = false) String title,
+                                      @RequestParam("role") String role){
+        Page<UserRolePermissions> page = userRolePermissionsService.findAllByRole(pageNum-1,pageSize,title,role);
         return ReturnResultUtil.success(page);
     }
 }

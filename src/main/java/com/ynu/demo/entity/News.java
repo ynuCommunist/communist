@@ -36,7 +36,7 @@ public class News {
     private String content;
 
     @ApiModelProperty(value = "阅读量",name = "readingVolume")
-    private String readingVolume;
+    private int readingVolume;
 
     @ApiModelProperty(value = "作者",name = "author")
     private String author;
