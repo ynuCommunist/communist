@@ -17,10 +17,10 @@ import javax.servlet.MultipartConfigElement;
 @Configuration
 public class photoConfig implements WebMvcConfigurer {
 
-    public static String ImageResources;
-    @Value("${ImageResources}")
-    public void setImageResources(String imageResources){
-        ImageResources = imageResources;
+    public static String PersonImageResources;
+    @Value("${PersonImageResources}")
+    public void setPersonImageResources(String personImageResources){
+        PersonImageResources = personImageResources;
     }
 
     public static String NewsImageResources;
@@ -29,11 +29,18 @@ public class photoConfig implements WebMvcConfigurer {
         NewsImageResources = newsImageResources;
     }
 
+    public static String HomepageImageResources;
+    @Value("${HomepageImageResources}")
+    public void setHomepageImageResources(String homepageImageResources){
+        HomepageImageResources = homepageImageResources;
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/PersonImage/**").addResourceLocations(ImageResources);
-        registry.addResourceHandler("/NewsImage/**").addResourceLocations(NewsImageResources);
-        registry.addResourceHandler("/NewsImage/HomepagePicture/**").addResourceLocations(NewsImageResources+"HomepagePicture\\");
+        registry.addResourceHandler("/PersonImage/*").addResourceLocations(PersonImageResources);
+        registry.addResourceHandler("/NewsImage/HomepageImage/*").addResourceLocations(HomepageImageResources);
+        registry.addResourceHandler("/NewsImage/*").addResourceLocations(NewsImageResources);
+
     }
 
     @Bean
