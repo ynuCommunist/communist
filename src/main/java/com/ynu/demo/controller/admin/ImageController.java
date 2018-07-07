@@ -8,10 +8,7 @@ import com.ynu.demo.utils.ReturnResultUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -35,7 +32,8 @@ public class ImageController {
 
     @PostMapping("/addImage")
     @ApiOperation(value = "添加图片")
-    public ReturnResult uploadImage(@RequestParam("setHomepageImage") MultipartFile multipartFile){
+    @CrossOrigin
+    public ReturnResult uploadImage(@RequestParam("file") MultipartFile multipartFile){
         String HttpPath;
         try {
             HttpPath = ImageUtil.saveNewsImage(multipartFile);

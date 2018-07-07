@@ -3,15 +3,12 @@ package com.ynu.demo.service.impl;
 import com.ynu.demo.Enum.ResultEnum;
 import com.ynu.demo.dto.NewsDTO;
 import com.ynu.demo.entity.News;
-import com.ynu.demo.entity.PersonData;
 import com.ynu.demo.entity.UserRolePermissions;
 import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.NewsRepository;
-import com.ynu.demo.repository.UserRolePermissionsRepository;
 import com.ynu.demo.service.NewsService;
 import com.ynu.demo.utils.ImageUtil;
 import com.ynu.demo.utils.KeyUtil;
-import com.ynu.demo.utils.TranferUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.BeanUtils;
@@ -47,9 +44,6 @@ public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
-    @Autowired
-    private UserRolePermissionsRepository userRolePermissionsRepository;
-
     @Override
     public void addNews(NewsDTO newsDTO) {
         /*设置唯一ID*/
@@ -59,6 +53,9 @@ public class NewsServiceImpl implements NewsService {
         UserRolePermissions userRolePermissions = (UserRolePermissions) SecurityUtils.getSubject().getPrincipal();
         newsDTO.setNewsPublisherId(userRolePermissions.getId());
         newsDTO.setNewsPublisher(userRolePermissions.getUsername());
+
+        /*设置发布时间*/
+        newsDTO.setUpdateTime(new Date());
 
         /*将中间量NewsDTO转换为News*/
         News news = new News();
@@ -81,7 +78,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void del(String id) {
+    public void delNews(String id) {
         /*将数据库中的信息删除*/
         newsRepository.deleteById(id);
         /*将本地的图片删除*/
@@ -90,11 +87,12 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void upd(NewsDTO newsDTO) {
+    public void updNews(NewsDTO newsDTO) {
         News news = new News();
         BeanUtils.copyProperties(newsDTO,news);
         MultipartFile multipartFile = newsDTO.getHomepageImage();
         if(multipartFile != null){
+            /*更改图片*/
             String contentType = multipartFile.getContentType();
             if (!contentType.contains("jpeg") && !contentType.contains("jpg") && !contentType.contains("png")) {
                 //图片格式不对
@@ -110,7 +108,6 @@ public class NewsServiceImpl implements NewsService {
             String photo = newsRepository.findById(newsDTO.getId()).get().getHomepageImage();
             news.setHomepageImage(photo);
         }
-
         newsRepository.save(news);
     }
 
@@ -139,7 +136,7 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public Page<News> findByTitle(Integer pageNum, Integer pageSize, String finding, String sort ,String sortBy) {
         Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
-        Page<News> page = newsRepository.findByTitleLike(finding, pageable);
+        Page<News> page = newsRepository.findByTitleLike("%"+finding+"%", pageable);
         if(page.getContent()==null){
             throw new  MyException(ResultEnum.ERROR);
         }
@@ -149,7 +146,7 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public Page<News> findByAuthor(Integer pageNum, Integer pageSize, String finding, String sort ,String sortBy) {
         Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
-        Page<News> page = newsRepository.findByAuthorLike(finding,pageable);
+        Page<News> page = newsRepository.findByAuthorLike("%"+finding+"%",pageable);
         if(page.getContent()==null){
             throw new  MyException(ResultEnum.ERROR);
         }
@@ -160,7 +157,7 @@ public class NewsServiceImpl implements NewsService {
     public Page<News> findByPublicationTime(Integer pageNum, Integer pageSize, String finding,String sort , String sortBy) {
         Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
 
-        Page<News> page = newsRepository.findByPublicationTimeLike(finding,pageable);
+        Page<News> page = newsRepository.findByPublicationTimeLike(finding+"%",pageable);
         if(page.getContent()==null){
             throw new  MyException(ResultEnum.ERROR);
         }

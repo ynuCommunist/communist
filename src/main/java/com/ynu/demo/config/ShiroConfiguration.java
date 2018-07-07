@@ -50,9 +50,14 @@ public class ShiroConfiguration {
 //        filterChainDefinitionMap.put("/index","sfaun");
         filterChainDefinitionMap.put("/login","anon");
 ////        filterChainDefinitionMap.put("/admin/**","myAccessControlFilter[admin]");
+
 ////        filterChainDefinitionMap.put("/user/**","myAccessControlFilter[user,admin]");
+        filterChainDefinitionMap.put("/admin/addImage","anon");
+        filterChainDefinitionMap.put("/admin/news/findAll","anon");
+        filterChainDefinitionMap.put("/admin/news/findById","anon");
         filterChainDefinitionMap.put("/admin/**","myAccessControlFilter[admin]");
         filterChainDefinitionMap.put("/user/**","myAccessControlFilter[user,admin]");
+
 
 //        filterChainDefinitionMap.put("/admin/find/*","perms[find]");
 //        filterChainDefinitionMap.put("/admin/add/*","perms[add]");

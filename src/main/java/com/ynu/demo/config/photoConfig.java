@@ -29,11 +29,17 @@ public class photoConfig implements WebMvcConfigurer {
         NewsImageResources = newsImageResources;
     }
 
+    public static String HomepageImageResources;
+    @Value("${HomepageImageResources}")
+    public void setHomepageImageResources(String homepageImageResources){
+        HomepageImageResources = homepageImageResources;
+    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/PersonImage/**").addResourceLocations(ImageResources);
         registry.addResourceHandler("/NewsImage/**").addResourceLocations(NewsImageResources);
-        registry.addResourceHandler("/NewsImage/HomepagePicture/**").addResourceLocations(NewsImageResources+"HomepagePicture\\");
+        registry.addResourceHandler("/NewsImage/HomepageImage/**").addResourceLocations(HomepageImageResources);
     }
 
     @Bean

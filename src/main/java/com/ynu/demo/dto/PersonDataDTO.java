@@ -68,7 +68,7 @@ public class PersonDataDTO {
     private String whereBeforeJoinCommunistParty;
 
     /*入党介绍人*/
-    private String introducer;
+//    private String introducer;
 
     /*转入当前支部日期*/
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -76,19 +76,19 @@ public class PersonDataDTO {
     private Date timeForJoinThis;
 
     /*转出党支部名称*/
-    private String nameBeforeJoin;
+//    private String nameBeforeJoin;
 
     /*现任党内职务*/
-    private String nowIncumbentPosition;
+//    private String nowIncumbentPosition;
 
     /*学历学位*/
     private String academicDegree;
 
     /*毕业院校系及专业*/
-    private String graduation;
+//    private String graduation;
 
     /*当前职业*/
-    private String currentCareer;
+//    private String currentCareer;
 
     /*现工作单位及职务*/
     private String presentWorkingUnitsAndDuties;
@@ -103,10 +103,10 @@ public class PersonDataDTO {
     private String phone;
 
     /*QQ号*/
-    private String qq;
+//    private String qq;
 
     /*微信号*/
-    private String wechat;
+//    private String wechat;
 
     /*父母配偶子女有关情况*/
     private String familySituation;
@@ -143,19 +143,19 @@ public class PersonDataDTO {
         this.timeForWorking = timeForWorking;
         this.idCard = idCard;
         this.whereBeforeJoinCommunistParty = whereBeforeJoinCommunistParty;
-        this.introducer = introducer;
+//        this.introducer = introducer;
         this.timeForJoinThis = timeForJoinThis;
-        this.nameBeforeJoin = nameBeforeJoin;
-        this.nowIncumbentPosition = nowIncumbentPosition;
+//        this.nameBeforeJoin = nameBeforeJoin;
+//        this.nowIncumbentPosition = nowIncumbentPosition;
         this.academicDegree = academicDegree;
-        this.graduation = graduation;
-        this.currentCareer = currentCareer;
+//        this.graduation = graduation;
+//        this.currentCareer = currentCareer;
         this.presentWorkingUnitsAndDuties = presentWorkingUnitsAndDuties;
         this.registeredPermanentResidence = registeredPermanentResidence;
         this.familyAddress = familyAddress;
         this.phone = phone;
-        this.qq = qq;
-        this.wechat = wechat;
+//        this.qq = qq;
+//        this.wechat = wechat;
         this.familySituation = familySituation;
         ApplicationForTransferToContent = applicationForTransferToContent;
         this.createTime = createTime;

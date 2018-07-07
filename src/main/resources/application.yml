@@ -9,12 +9,12 @@ spring:
 
 #自定义变量
 ImageUrl: http://localhost:8080/PersonImage/
-ImageResources: file:/home/icesource/IdeaProjects/communist/src/main/resources/PersonImage/
+ImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/PersonImage/
 ImageLocation: ./src/main/resources/PersonImage/
 
 NewsImageUrl: http://localhost:8080/NewsImage/
-NewsImageResources: file:/home/icesource/IdeaProjects/communist/src/main/resources/photo/NewsImage/
+NewsImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/NewsImage/
 NewsImageLocation: ./src/main/resources/NewsImage/
 
-
-HomepageImage: HomepageImage\
+HomepageImage: HomepageImage/
+HomepageImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/NewsImage/HomepageImage/
