@@ -23,6 +23,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -69,7 +72,8 @@ public class NewsServiceImpl implements NewsService {
                 throw new MyException(ResultEnum.ERROR);
             }
         }
-        news.setReadingVolume(0);
+//        news.setReadingVolume(0);
+        news.setUpdateTime(news.getPublicationTime());
         newsRepository.save(news);
     }
 
@@ -104,6 +108,15 @@ public class NewsServiceImpl implements NewsService {
             String photo = newsRepository.findById(newsDTO.getId()).get().getHomepageImage();
             news.setHomepageImage(photo);
         }
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = dateformat.format(System.currentTimeMillis());
+        Date date=null;
+        try {
+            date = dateformat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        news.setUpdateTime(date);
         newsRepository.save(news);
     }
 

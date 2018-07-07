@@ -16,6 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @Author: IceSource and QW
@@ -51,7 +54,16 @@ public class AdminUpdServiceImpl implements AdminUpdService {
             String photo = addRepository.findById(personDataDTO.getId()).get().getPhoto();
             personData.setPhoto(photo);
         }
-
+        personData.setCreateTime(addRepository.findById(personData.getId()).get().getCreateTime());
+        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateStr = dateformat.format(System.currentTimeMillis());
+        Date date=null;
+        try {
+            date = dateformat.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        personData.setUpdateTime(date);
         addRepository.save(personData);
     }
 }
