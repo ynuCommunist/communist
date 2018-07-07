@@ -43,6 +43,18 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    public Page<News> findAll(Integer pageNum, Integer pageSize, String title,String sort, String sortBy) {
+        Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
+        Page<News> page;
+        if(title.equals("")){
+            page = newsRepository.findAll(pageable);
+        }else {
+            page = newsRepository.findByTitleLikeOrContentLike("%"+title+"%","%"+title+"%",pageable);
+        }
+        return page;
+    }
+
+    @Override
     public News findById(String id) {
         Optional<News> optionalNews = newsRepository.findById(id);
         if(!optionalNews.isPresent()){

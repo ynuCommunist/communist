@@ -30,13 +30,12 @@ public interface NewsRepository extends JpaRepository<News,String> {
 
     Page<News> findAll(Pageable pageable);
 
+    Page<News> findByTitleLikeOrContentLike(String str1, String str2 , Pageable pageable);
+
     Page<News> findByTitleLike(String title ,Pageable pageable);
 
     Page<News> findByAuthorLike(String author ,Pageable pageable);
 
-//    Page<News> findByPublicationTime(String date ,Pageable pageable);
-
-//    @Query(nativeQuery = true,value = "select ")
     Page<News> findByPublicationTimeLike(String date ,Pageable pageable);
 
 }

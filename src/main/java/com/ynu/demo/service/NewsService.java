@@ -22,6 +22,8 @@ public interface NewsService {
     void upd(News news);
 
     /*找新闻*/
+    Page<News> findAll(Integer pageNum, Integer pageSize, String title,String sort, String sortBy);
+
     News findById(String id);
 
     Page<News> findByTitle(Integer pageNum, Integer pageSize, String finding, String sort ,String sortBy);

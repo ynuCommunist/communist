@@ -39,19 +39,8 @@ public class NewsController {
 
     @ApiOperation(value = "添加新闻")
     @PostMapping("/addOne")
-    public ReturnResult addNews(@RequestParam("files")MultipartFile[] files) {
-        List<String> urls = new ArrayList<>();
-        log.info(String.valueOf(files.length));
-        if (files.length == 0){
-            throw new MyException(ResultEnum.ERROR);
-        }
+    public ReturnResult addNews() {
 
-
-        try {
-            ImageUtil.saveImgs(files,"test");
-        } catch (IOException e) {
-            throw new MyException(ResultEnum.ERROR);
-        }
         return null;
     }
 
@@ -65,6 +54,17 @@ public class NewsController {
     @PostMapping("/updOne")
     public ReturnResult updNews(News news) {
         return null;
+    }
+
+    @ApiOperation(value = "查找所有新闻")
+    @GetMapping("/findAll")
+    public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
+                                @RequestParam("pageSize") Integer pageSize,
+                                @RequestParam(name = "title",defaultValue = "",required = false) String title,
+                                @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                @RequestParam(name = "sortBy", defaultValue = "publicationTime") String sortBy) {
+        Page<News> page = newsService.findAll(pageNum-1,pageSize,title,sort,sortBy);
+        return ReturnResultUtil.success(page);
     }
 
     @ApiOperation(value = "通过ID找新闻")
