@@ -28,7 +28,7 @@ public class FindController {
     @GetMapping("/findall")
     public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
                                 @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam(name = "finding",defaultValue = "",required = false) String finding,
+                                @RequestParam(name = "title",required = false) String finding,
                                 @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                 @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
 
