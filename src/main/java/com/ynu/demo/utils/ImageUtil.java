@@ -18,16 +18,16 @@ import java.io.*;
 public class ImageUtil {
 
 
-    public static String ImageUrl;
-    @Value("${ImageUrl}")
-    public void setImageUrl(String imageUrl){
-        ImageUrl = imageUrl;
+    public static String PersonImageUrl;
+    @Value("${PersonImageUrl}")
+    public void setPersonImageUrl(String personImageUrl){
+        PersonImageUrl = personImageUrl;
     }
 
-    public static String ImageLocation;
-    @Value("${ImageLocation}")
-    public void setImageLocation(String imageLocation){
-        ImageLocation = imageLocation;
+    public static String PersonImageLocation;
+    @Value("${PersonImageLocation}")
+    public void setPersonImageLocation(String personImageLocation){
+        PersonImageLocation = personImageLocation;
     }
 
     public static String NewsImageUrl;
@@ -42,9 +42,21 @@ public class ImageUtil {
         NewsImageLocation = newsImageLocation;
     }
 
+    public static String HomepageImageUrl;
+    @Value("${HomepageImageUrl}")
+    public void setHomepageImageUrl(String homepageImageUrl){
+        HomepageImageUrl = homepageImageUrl;
+    }
+
+    public static String HomepageImageLocation;
+    @Value("${HomepageImageLocation}")
+    public void setHomepageImageLocation(String homepageImageLocation){
+        HomepageImageLocation = homepageImageLocation;
+    }
+
     public static String savePersonImage(MultipartFile multipartFile, String fileName) throws IOException {
-        String totalPath = ImageLocation + fileName + ".png";
-        String HttpPath = ImageUrl + fileName + ".png";
+        String totalPath = PersonImageLocation + fileName + ".png";
+        String HttpPath = PersonImageUrl + fileName + ".png";
         log.info("图片存储地址:" + totalPath);
         FileInputStream fileInputStream = (FileInputStream) multipartFile.getInputStream();
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(totalPath));
@@ -101,8 +113,8 @@ public class ImageUtil {
     }
 
     public static String saveNewsImage(MultipartFile multipartFile, String fileName) throws IOException {
-        String totalPath = NewsImageLocation +"HomepageImage\\"+ fileName + ".png";
-        String HttpPath = NewsImageUrl +"HomepageImage/"+ fileName + ".png";
+        String totalPath = HomepageImageLocation + fileName + ".png";
+        String HttpPath = HomepageImageUrl + fileName + ".png";
         log.info("图片存储地址:" + totalPath);
         FileInputStream fileInputStream = (FileInputStream) multipartFile.getInputStream();
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(totalPath));

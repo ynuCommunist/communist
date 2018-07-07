@@ -18,8 +18,8 @@ import java.io.File;
 @Slf4j
 public class AdminDelServiceImpl implements AdminDelService {
 
-    @Value("${ImageLocation}")
-    private String ImageLocation;
+    @Value("${PersonImageLocation}")
+    private String PersonImageLocation;
 
 
     @Autowired
@@ -28,7 +28,7 @@ public class AdminDelServiceImpl implements AdminDelService {
     @Override
     public void delById(String id) {
         delRepository.deleteById(id);
-        File file = new File(ImageLocation+id+".png");
+        File file = new File(PersonImageLocation+id+".png");
         file.delete();
     }
 }

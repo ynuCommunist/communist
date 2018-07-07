@@ -38,8 +38,8 @@ public class NewsServiceImpl implements NewsService {
     @Value("${NewsImageLocation}")
     private String NewsImageLocation;
 
-    @Value("${HomepageImage}")
-    private String HomepageImage;
+    @Value("${HomepageImageLocation}")
+    private String HomepageImageLocation;
 
     @Autowired
     private NewsRepository newsRepository;
@@ -82,7 +82,7 @@ public class NewsServiceImpl implements NewsService {
         /*将数据库中的信息删除*/
         newsRepository.deleteById(id);
         /*将本地的图片删除*/
-        File file = new File(NewsImageLocation + HomepageImage + id + ".png");
+        File file = new File(HomepageImageLocation + id + ".png");
         file.delete();
     }
 

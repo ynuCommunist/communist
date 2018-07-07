@@ -49,6 +49,8 @@ public enum ResultEnum {
 
     ADMIN_ERROR(99998,"管理员不可删除"),
 
+    ADMIN_NOT_UPDATE(99998,"管理员不可修改"),
+
     ADD_FAIL(70000,"添加失败"),
 
     UPDATE_FAIL(80000,"更新失败"),
