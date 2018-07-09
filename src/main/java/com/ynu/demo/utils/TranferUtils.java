@@ -35,7 +35,7 @@ public class TranferUtils {
         PersonData personData = new PersonData();
         BeanUtils.copyProperties(personDataDTO,personData);
         try {
-            personData.setPersonImage(ImageUtil.savePersonImage(personDataDTO.getPersonImage(),personDataDTO.getId()));
+            personData.setPhoto(ImageUtil.savePersonImage(personDataDTO.getPhoto(),personDataDTO.getId()));
         } catch (IOException e) {
             throw new MyException(ResultEnum.ERROR);
         }

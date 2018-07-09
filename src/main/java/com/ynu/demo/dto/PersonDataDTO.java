@@ -41,8 +41,8 @@ public class PersonDataDTO {
     private String city;
 
     /*个人照片*/
-    @ApiModelProperty(value = "个人照片",name = "personImage")
-    private MultipartFile personImage;
+    @ApiModelProperty(value = "个人照片",name = "photo")
+    private MultipartFile photo;
 
     /*性别（规定0为女性，1为男性）*/
     @ApiModelProperty(value = "性别",name = "sex")

@@ -30,7 +30,7 @@ public class AdminAddServiceImpl implements AdminAddService {
 
     @Override
     public PersonData add(PersonDataDTO personDataDTO) {
-        MultipartFile multipartFile = personDataDTO.getPersonImage();
+        MultipartFile multipartFile = personDataDTO.getPhoto();
         if (multipartFile == null) {
             //图片为空
             throw new MyException(ResultEnum.IMAGE_ERROR);

@@ -30,7 +30,7 @@ public class AdminAddServiceImplTest {
         PersonData personData = new PersonData();
         personData.setId("8");
         personData.setName("小狗");
-        personData.setPersonImage("http://...");
+        personData.setPhoto("http://...");
         personData.setSex("0");
         personData.setBirthday(new Date(1997-1900,11,30));
         personData.setNationality("汉族");

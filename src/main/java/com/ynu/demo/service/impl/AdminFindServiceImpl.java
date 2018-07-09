@@ -258,7 +258,6 @@ public class AdminFindServiceImpl implements AdminFindService {
         int i = 0;
         for (String str : map.keySet()) {
             arrayCountries[i] = new arrayCountry(str,map.get(str));
-            log.info(arrayCountries[i].toString());
             i++;
         }
         return arrayCountries;

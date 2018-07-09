@@ -34,7 +34,7 @@ public class AdminUpdServiceImpl implements AdminUpdService {
 
     @Override
     public void update(PersonDataDTO personDataDTO) {
-        MultipartFile multipartFile = personDataDTO.getPersonImage();
+        MultipartFile multipartFile = personDataDTO.getPhoto();
         PersonData personData = new PersonData();
         BeanUtils.copyProperties(personDataDTO,personData);
         if(multipartFile != null){
@@ -45,14 +45,14 @@ public class AdminUpdServiceImpl implements AdminUpdService {
                 throw new MyException(ResultEnum.IMAGE_FORM_ERROR);
             }
             try {
-                personData.setPersonImage(ImageUtil.savePersonImage(personDataDTO.getPersonImage(),personDataDTO.getId()));
+                personData.setPhoto(ImageUtil.savePersonImage(personDataDTO.getPhoto(),personDataDTO.getId()));
             } catch (IOException e) {
                 throw new MyException(ResultEnum.ERROR);
             }
         }else {
             /*不更新图片 保存原来图片存储位置*/
-            String photo = addRepository.findById(personDataDTO.getId()).get().getPersonImage();
-            personData.setPersonImage(photo);
+            String photo = addRepository.findById(personDataDTO.getId()).get().getPhoto();
+            personData.setPhoto(photo);
         }
         personData.setCreateTime(addRepository.findById(personData.getId()).get().getCreateTime());
         SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

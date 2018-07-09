@@ -42,8 +42,8 @@ public class PersonData {
     private String city;
 
     /*个人照片*/
-    @ApiModelProperty(value = "个人照片",name = "personImage")
-    private String personImage;
+    @ApiModelProperty(value = "个人照片",name = "photo")
+    private String photo;
 
     /*性别（规定0为女性，1为男性）*/
     @ApiModelProperty(value = "性别",name = "sex")
