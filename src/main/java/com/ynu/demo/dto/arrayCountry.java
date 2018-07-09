@@ -13,8 +13,19 @@ public class arrayCountry {
 
     private Integer comunitCount;
 
+    private String lng;
+
+    private String lat;
+
     public arrayCountry(String country, Integer comunitCount) {
         this.country = country;
         this.comunitCount = comunitCount;
+    }
+
+    public arrayCountry(String country, Integer comunitCount, String lng, String lat) {
+        this.country = country;
+        this.comunitCount = comunitCount;
+        this.lng = lng;
+        this.lat = lat;
     }
 }
