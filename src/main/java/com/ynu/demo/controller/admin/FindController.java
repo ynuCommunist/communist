@@ -70,6 +70,12 @@ public class FindController {
         return ReturnResultUtil.success(adminFindService.findAllGroupByCity());
     }
 
+    @GetMapping("/findAllGroupByCountry")
+    @ApiOperation(value = "查找定位国家的党员数量")
+    public ReturnResult findAllGroupByCountry(){
+        return ReturnResultUtil.success(adminFindService.findAllGroupByCountry());
+    }
+
     @GetMapping("/findBySex")
     @ApiOperation(value = "通过性别查找党员")
     public ReturnResult findBySex(@RequestParam("pageNum") Integer pageNum,

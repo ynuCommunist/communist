@@ -1,7 +1,8 @@
 package com.ynu.demo.service.impl;
 
 import com.ynu.demo.Enum.ResultEnum;
-import com.ynu.demo.dto.array;
+import com.ynu.demo.dto.arrayCity;
+import com.ynu.demo.dto.arrayCountry;
 import com.ynu.demo.entity.PersonData;
 import com.ynu.demo.exception.MyException;
 import com.ynu.demo.repository.FindRepository;
@@ -223,7 +224,7 @@ public class AdminFindServiceImpl implements AdminFindService {
     }
 
     @Override
-    public array[] findAllGroupByCity() {
+    public arrayCity[] findAllGroupByCity() {
         List<PersonData> list = findRepository.findAll();
         Map<String ,Integer> map = new HashMap<>();
         for (PersonData temp : list) {
@@ -233,14 +234,32 @@ public class AdminFindServiceImpl implements AdminFindService {
                 map.put(temp.getCity(),1);
             }
         }
-        array[] arrays = new array[map.size()];
+        arrayCity[] arrayCities = new arrayCity[map.size()];
         int i = 0;
         for (String str : map.keySet()) {
-            arrays[i] = new array(str,map.get(str));
+            arrayCities[i] = new arrayCity(str,map.get(str));
             i++;
         }
-        return arrays;
+        return arrayCities;
     }
 
-
+    @Override
+    public arrayCountry[] findAllGroupByCountry() {
+        List<PersonData> list = findRepository.findAll();
+        Map<String ,Integer> map = new HashMap<>();
+        for (PersonData temp : list) {
+            if(map.containsKey(temp.getLocationCountry())){
+                map.put(temp.getLocationCountry(),map.get(temp.getLocationCountry())+1);
+            }else {
+                map.put(temp.getLocationCountry(),1);
+            }
+        }
+        arrayCountry[] arrayCountries = new arrayCountry[map.size()];
+        int i = 0;
+        for (String str : map.keySet()) {
+            arrayCountries[i] = new arrayCountry(str,map.get(str));
+            i++;
+        }
+        return arrayCountries;
+    }
 }

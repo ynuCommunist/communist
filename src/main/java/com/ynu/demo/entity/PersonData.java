@@ -25,12 +25,24 @@ public class PersonData {
     @ApiModelProperty(value = "姓名",name = "name")
     private String name;
 
+    /*当前定位国家*/
+    @ApiModelProperty(value = "定位国家",name = "locationCountry")
+    private String locationCountry;
+
+    /*当前所在城市经度*/
+    @ApiModelProperty(value = "经度",name = "lng")
+    private String lng;
+
+    /*当前所在城市纬度*/
+    @ApiModelProperty(value = "纬度",name = "lat")
+    private String lat;
+
     /*当前所在城市*/
     @ApiModelProperty(value = "所在城市",name = "city")
     private String city;
 
     /*个人照片*/
-    @ApiModelProperty(value = "个人照片",name = "PersonImage")
+    @ApiModelProperty(value = "个人照片",name = "photo")
     private String photo;
 
     /*性别（规定0为女性，1为男性）*/
