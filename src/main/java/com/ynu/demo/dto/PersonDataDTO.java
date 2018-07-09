@@ -97,8 +97,8 @@ public class PersonDataDTO {
     private String whereBeforeJoinCommunistParty;
 
     /*入党介绍人*/
-    @ApiModelProperty(value = "入党介绍人",name = "introducer")
-    private String introducer;
+//    @ApiModelProperty(value = "入党介绍人",name = "introducer")
+//    private String introducer;
 
     /*转入当前支部日期*/
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -107,28 +107,28 @@ public class PersonDataDTO {
     private Date timeForJoinThis;
 
     /*转出党支部名称*/
-    @ApiModelProperty(value = "转出党支部名称",name = "nameBeforeJoin")
-    private String nameBeforeJoin;
-
-    /*现任党内职务*/
-    @ApiModelProperty(value = "现任党内职务",name = "nowIncumbentPosition")
-    private String nowIncumbentPosition;
+//    @ApiModelProperty(value = "转出党支部名称",name = "nameBeforeJoin")
+//    private String nameBeforeJoin;
+//
+//    /*现任党内职务*/
+//    @ApiModelProperty(value = "现任党内职务",name = "nowIncumbentPosition")
+//    private String nowIncumbentPosition;
 
     /*学历学位*/
     @ApiModelProperty(value = "学历学位",name = "academicDegree")
     private String academicDegree;
 
     /*毕业院校系及专业*/
-    @ApiModelProperty(value = "毕业院校系及专业",name = "graduation")
-    private String graduation;
+//    @ApiModelProperty(value = "毕业院校系及专业",name = "graduation")
+//    private String graduation;
+//
+//    /*当前职业*/
+//    @ApiModelProperty(value = "当前职业",name = "currentCareer")
+//    private String currentCareer;
 
-    /*当前职业*/
-    @ApiModelProperty(value = "当前职业",name = "currentCareer")
-    private String currentCareer;
-
-    /*现工作单位及职务*/
-    @ApiModelProperty(value = "现工作单位及职务",name = "presentWorkingUnitsAndDuties")
-    private String presentWorkingUnitsAndDuties;
+//    /*现工作单位及职务*/
+//    @ApiModelProperty(value = "现工作单位及职务",name = "presentWorkingUnitsAndDuties")
+//    private String presentWorkingUnitsAndDuties;
 
     /*户籍所在地*/
     @ApiModelProperty(value = "户籍所在地",name = "registeredPermanentResidence")
@@ -142,13 +142,12 @@ public class PersonDataDTO {
     @ApiModelProperty(value = "手机号码",name = "phone")
     private String phone;
 
-    /*QQ号*/
-    @ApiModelProperty(value = "QQ",name = "qq")
-    private String qq;
-
-    /*微信号*/
-    @ApiModelProperty(value = "微信号",name = "wechat")
-    private String wechat;
+//    @ApiModelProperty(value = "QQ",name = "qq")
+//    private String qq;
+//
+//    /*微信号*/
+//    @ApiModelProperty(value = "微信号",name = "wechat")
+//    private String wechat;
 
     /*父母配偶子女有关情况*/
     @ApiModelProperty(value = "父母配偶子女有关情况",name = "familySituation")

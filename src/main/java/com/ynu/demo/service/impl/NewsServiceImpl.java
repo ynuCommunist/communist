@@ -56,6 +56,9 @@ public class NewsServiceImpl implements NewsService {
         newsDTO.setNewsPublisherId(userRolePermissions.getId());
         newsDTO.setNewsPublisher(userRolePermissions.getUsername());
 
+        /*设置发布时间*/
+        newsDTO.setUpdateTime(new Date());
+
         /*将中间量NewsDTO转换为News*/
         News news = new News();
         BeanUtils.copyProperties(newsDTO,news);

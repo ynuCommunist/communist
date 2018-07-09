@@ -9,13 +9,13 @@ spring:
 
 #自定义变量
 PersonImageUrl: http://localhost:8080/PersonImage/
-PersonImageResources: file:C://Users/10049/Desktop/item/demo/src/main/resources/PersonImage/
+PersonImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/PersonImage/
 PersonImageLocation: ./src/main/resources/PersonImage/
 
 NewsImageUrl: http://localhost:8080/NewsImage/
-NewsImageResources: file:C://Users/10049/Desktop/item/demo/src/main/resources/NewsImage/
+NewsImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/NewsImage/
 NewsImageLocation: ./src/main/resources/NewsImage/
 
 HomepageImageUrl: http://localhost:8080/NewsImage/HomepageImage/
-HomepageImageResources: file:C://Users/10049/Desktop/item/demo/src/main/resources/NewsImage/HomepageImage/
+HomepageImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/NewsImage/HomepageImage/
 HomepageImageLocation: ./src/main/resources/NewsImage/HomepageImage/

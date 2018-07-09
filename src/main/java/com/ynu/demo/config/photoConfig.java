@@ -37,6 +37,7 @@ public class photoConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
         registry.addResourceHandler("/PersonImage/*").addResourceLocations(PersonImageResources);
         registry.addResourceHandler("/NewsImage/HomepageImage/*").addResourceLocations(HomepageImageResources);
         registry.addResourceHandler("/NewsImage/*").addResourceLocations(NewsImageResources);
