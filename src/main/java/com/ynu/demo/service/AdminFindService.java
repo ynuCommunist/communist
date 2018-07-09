@@ -23,6 +23,9 @@ public interface AdminFindService {
     /*根据所在城市查找*/
     Page<PersonData> getGroupByCity(Integer pageNum, Integer pageSize, String finding, boolean isAccurate,String sort ,String sortBy);
 
+    /*根据定位城市查找查找*/
+    Page<PersonData> getGroupByLocationCountry(Integer pageNum, Integer pageSize, String finding, boolean isAccurate,String sort ,String sortBy);
+
     /*根据性别查找*/
     Page<PersonData> getListBySex(Integer pageNum, Integer pageSize, String finding, String sort ,String sortBy);
 

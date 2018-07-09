@@ -28,11 +28,10 @@ public class FindController {
     @GetMapping("/findall")
     public ReturnResult findAll(@RequestParam("pageNum") Integer pageNum,
                                 @RequestParam("pageSize") Integer pageSize,
-                                @RequestParam(name = "title",required = false) String finding,
+                                @RequestParam(name = "title", required = false) String finding,
                                 @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                 @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-
-        return ReturnResultUtil.success(adminFindService.getList(pageNum-1, pageSize, finding, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getList(pageNum - 1, pageSize, finding, sort, sortBy));
     }
 
     @ApiOperation(value = "通过ID查找党员")
@@ -50,30 +49,41 @@ public class FindController {
                                    @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                    @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                    @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByName(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByName(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @GetMapping("/findByCity")
     @ApiOperation(value = "通过城市查找党员")
     public ReturnResult getGroupByCity(@RequestParam("pageNum") Integer pageNum,
-                                   @RequestParam("pageSize") Integer pageSize,
-                                   @RequestParam("finding") String finding,
-                                   @RequestParam(name = "isAccurate", defaultValue = "true") boolean isAccurate,
-                                   @RequestParam(name = "sort", defaultValue = "ASC") String sort,
-                                   @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getGroupByCity(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+                                       @RequestParam("pageSize") Integer pageSize,
+                                       @RequestParam("finding") String finding,
+                                       @RequestParam(name = "isAccurate", defaultValue = "true") boolean isAccurate,
+                                       @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                       @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
+        return ReturnResultUtil.success(adminFindService.getGroupByCity(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @GetMapping("/findAllGroupByCity")
     @ApiOperation(value = "查找城市的党员数量")
-    public ReturnResult findAllGroupByCity(){
+    public ReturnResult findAllGroupByCity() {
         return ReturnResultUtil.success(adminFindService.findAllGroupByCity());
     }
 
     @GetMapping("/findAllGroupByCountry")
     @ApiOperation(value = "查找定位国家的党员数量")
-    public ReturnResult findAllGroupByCountry(){
+    public ReturnResult findAllGroupByCountry() {
         return ReturnResultUtil.success(adminFindService.findAllGroupByCountry());
+    }
+
+    @GetMapping("/findByLocationCountry")
+    @ApiOperation(value = "通过定位国家查找党员")
+    public ReturnResult getGroupByLocationCountry(@RequestParam("pageNum") Integer pageNum,
+                                                  @RequestParam("pageSize") Integer pageSize,
+                                                  @RequestParam("finding") String finding,
+                                                  @RequestParam(name = "isAccurate", defaultValue = "true") boolean isAccurate,
+                                                  @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                                  @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
+        return ReturnResultUtil.success(adminFindService.getGroupByLocationCountry(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @GetMapping("/findBySex")
@@ -83,7 +93,7 @@ public class FindController {
                                   @RequestParam("finding") String finding,
                                   @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                   @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListBySex(pageNum-1, pageSize, finding, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListBySex(pageNum - 1, pageSize, finding, sort, sortBy));
     }
 
     @ApiOperation(value = "通过国籍查找党员")
@@ -94,18 +104,18 @@ public class FindController {
                                           @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                           @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                           @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByNationality(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByNationality(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @ApiOperation(value = "通过民族查找党员")
     @GetMapping("/findByNation")
     public ReturnResult findByNation(@RequestParam("pageNum") Integer pageNum,
-                                          @RequestParam("pageSize") Integer pageSize,
-                                          @RequestParam("finding") String finding,
-                                          @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
-                                          @RequestParam(name = "sort", defaultValue = "ASC") String sort,
-                                          @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByNation(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+                                     @RequestParam("pageSize") Integer pageSize,
+                                     @RequestParam("finding") String finding,
+                                     @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
+                                     @RequestParam(name = "sort", defaultValue = "ASC") String sort,
+                                     @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
+        return ReturnResultUtil.success(adminFindService.getListByNation(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @ApiOperation(value = "通过籍贯查找党员")
@@ -116,7 +126,7 @@ public class FindController {
                                           @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                           @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                           @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByNativePlace(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByNativePlace(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @ApiOperation(value = "通过婚姻状况查找党员")
@@ -126,7 +136,7 @@ public class FindController {
                                           @RequestParam("finding") String finding,
                                           @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                           @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByMarryStatus(pageNum-1, pageSize, finding, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByMarryStatus(pageNum - 1, pageSize, finding, sort, sortBy));
     }
 
     @ApiOperation(value = "通过家庭地址查找党员")
@@ -137,7 +147,7 @@ public class FindController {
                                             @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                             @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                             @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByFamilyAddress(pageNum-1, pageSize, finding, isAccurate, sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByFamilyAddress(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @ApiOperation(value = "通过毕业院校系及专业查找党员")
@@ -148,7 +158,7 @@ public class FindController {
                                          @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                          @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                          @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByGraduation(pageNum-1, pageSize, finding, isAccurate,sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByGraduation(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
     @ApiOperation(value = "通过学历学位查找党员")
@@ -159,7 +169,7 @@ public class FindController {
                                              @RequestParam(name = "isAccurate", defaultValue = "true") Boolean isAccurate,
                                              @RequestParam(name = "sort", defaultValue = "ASC") String sort,
                                              @RequestParam(name = "sortBy", defaultValue = "id") String sortBy) {
-        return ReturnResultUtil.success(adminFindService.getListByAcademicDegree(pageNum-1, pageSize, finding, isAccurate,sort, sortBy));
+        return ReturnResultUtil.success(adminFindService.getListByAcademicDegree(pageNum - 1, pageSize, finding, isAccurate, sort, sortBy));
     }
 
 }

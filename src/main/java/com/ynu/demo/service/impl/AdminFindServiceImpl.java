@@ -40,7 +40,7 @@ public class AdminFindServiceImpl implements AdminFindService {
             page = findRepository.findAll(pageable);
         }else {
             finding = "%"+finding+"%";
-            page = findRepository.findDistinctByNameLikeOrCityLikeOrNationalityLike(finding,finding,finding,pageable);;
+            page = findRepository.findDistinctByNameLikeOrCityLikeOrLocationCountryLike(finding,finding,finding,pageable);;
 
         }
         if (!page.hasContent()){
@@ -92,6 +92,24 @@ public class AdminFindServiceImpl implements AdminFindService {
 
         if (!page.hasContent()){
             throw new MyException(ResultEnum.CITY_NOT_EXIST);
+        }
+
+        return page;
+    }
+
+    @Override
+    public Page<PersonData> getGroupByLocationCountry(Integer pageNum, Integer pageSize, String finding, boolean isAccurate, String sort, String sortBy) {
+        Pageable pageable = PageRequest.of(pageNum, pageSize, Sort.Direction.valueOf(sort), sortBy);
+        Page<PersonData> page;
+
+        if(isAccurate){
+            page = findRepository.queryByLocationCountry(finding,pageable);
+        }else {
+            page = findRepository.queryByLocationCountryLike("%"+finding+"%",pageable);
+        }
+
+        if (!page.hasContent()){
+            throw new MyException(ResultEnum.LOCATIONCOUNTRY_NOT_EXIST);
         }
 
         return page;
@@ -237,7 +255,7 @@ public class AdminFindServiceImpl implements AdminFindService {
         arrayCity[] arrayCities = new arrayCity[map.size()];
         int i = 0;
         for (String str : map.keySet()) {
-            arrayCities[i] = new arrayCity(str,map.get(str));
+            arrayCities[i] = new arrayCity(str,map.get(str),findRepository.findFirstByCity(str).getLng(),findRepository.findFirstByCity(str).getLat());
             i++;
         }
         return arrayCities;
@@ -246,6 +264,7 @@ public class AdminFindServiceImpl implements AdminFindService {
     @Override
     public arrayCountry[] findAllGroupByCountry() {
         List<PersonData> list = findRepository.findAll();
+//        List<PersonData> list1 findRepository.queryAllByCity();
         Map<String ,Integer> map = new HashMap<>();
         for (PersonData temp : list) {
             if(map.containsKey(temp.getLocationCountry())){
@@ -257,7 +276,7 @@ public class AdminFindServiceImpl implements AdminFindService {
         arrayCountry[] arrayCountries = new arrayCountry[map.size()];
         int i = 0;
         for (String str : map.keySet()) {
-            arrayCountries[i] = new arrayCountry(str,map.get(str));
+            arrayCountries[i] = new arrayCountry(str,map.get(str),findRepository.findFirstByLocationCountry(str).getLng(),findRepository.findFirstByLocationCountry(str).getLat());
             i++;
         }
         return arrayCountries;

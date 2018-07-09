@@ -21,6 +21,8 @@ public enum ResultEnum {
 
     CITY_NOT_EXIST(4,"查找该所在城市的党员不存在"),
 
+    LOCATIONCOUNTRY_NOT_EXIST(4,"查找该定位城市的党员不存在"),
+
     SEX_NOT_EXIST(5,"查找该性别的党员不存在"),
 
     NATIONALITY_NOT_EXIST(6,"查找该民族的党员不存在"),

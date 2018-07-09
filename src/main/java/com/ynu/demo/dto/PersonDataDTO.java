@@ -29,12 +29,12 @@ public class PersonDataDTO {
     private String locationCountry;
 
     /*当前所在城市经度*/
-    @ApiModelProperty(value = "经度",name = "longitude")
-    private String longitude;
+    @ApiModelProperty(value = "经度",name = "lng")
+    private String lng;
 
     /*当前所在城市纬度*/
-    @ApiModelProperty(value = "纬度",name = "latitude")
-    private String latitude;
+    @ApiModelProperty(value = "纬度",name = "lat")
+    private String lat;
 
     /*当前所在城市*/
     @ApiModelProperty(value = "所在城市",name = "city")
