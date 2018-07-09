@@ -1,6 +1,7 @@
 package com.ynu.demo.service;
 
-import com.ynu.demo.dto.array;
+import com.ynu.demo.dto.arrayCity;
+import com.ynu.demo.dto.arrayCountry;
 import com.ynu.demo.entity.PersonData;
 import org.springframework.data.domain.Page;
 
@@ -46,7 +47,8 @@ public interface AdminFindService {
     /*根据学历学位查找*/
     Page<PersonData> getListByAcademicDegree(Integer pageNum, Integer pageSize, String finding, boolean isAccurate,String sort ,String sortBy);
 
-    /*返回MAP，key为城市，value为该城市党员数量*/
-    array[] findAllGroupByCity();
+    arrayCity[] findAllGroupByCity();
+
+    arrayCountry[] findAllGroupByCountry();
 
 }

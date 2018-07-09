@@ -30,7 +30,7 @@ public class AdminAddServiceImpl implements AdminAddService {
 
     @Override
     public PersonData add(PersonDataDTO personDataDTO) {
-        MultipartFile multipartFile = personDataDTO.getPhoto();
+        MultipartFile multipartFile = personDataDTO.getPersonImage();
         if (multipartFile == null) {
             //图片为空
             throw new MyException(ResultEnum.IMAGE_ERROR);
@@ -42,8 +42,8 @@ public class AdminAddServiceImpl implements AdminAddService {
             throw new MyException(ResultEnum.IMAGE_FORM_ERROR);
         }
         personDataDTO.setId(KeyUtil.getUniqueKey());
+        personDataDTO.setUpdateTime(personDataDTO.getCreateTime());
         PersonData personData = TranferUtils.changeToPersonData(personDataDTO);
-        
         return findRepository.save(personData);
     }
 }
