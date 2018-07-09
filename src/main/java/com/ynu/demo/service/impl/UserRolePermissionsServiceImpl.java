@@ -75,7 +75,12 @@ public class UserRolePermissionsServiceImpl implements UserRolePermissionsServic
     @Override
     public Page<UserRolePermissions> findAllByRole(Integer pageNum, Integer pageSize, String title,String finding) {
         Pageable pageable = PageRequest.of(pageNum, pageSize);
-        Page<UserRolePermissions> page = userRolePermissionsRepository.findAllByUsernameLikeAndRoleIs("%"+title+"%",finding,pageable);
+        Page<UserRolePermissions> page;
+        if(title==null){
+            page = userRolePermissionsRepository.findAll(pageable);
+        }else{
+            page = userRolePermissionsRepository.findAllByUsernameLikeAndRoleIs("%"+title+"%",finding,pageable);
+        }
         for (int i = 0; i < page.getTotalElements(); i++) {
             page.getContent().get(i).setPassword("");
         }
