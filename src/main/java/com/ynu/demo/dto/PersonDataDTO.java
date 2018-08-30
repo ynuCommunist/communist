@@ -67,8 +67,8 @@ public class PersonDataDTO {
     private String nativePlace;
 
     /*婚姻状况（0为未婚，1为已婚，2为离婚，3为丧偶）*/
-    @ApiModelProperty(value = "婚姻状况",name = "marryStatus")
-    private String marryStatus;
+//    @ApiModelProperty(value = "婚姻状况",name = "marryStatus")
+//    private String marryStatus;
 
     /*入党时间*/
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -101,10 +101,10 @@ public class PersonDataDTO {
 //    private String introducer;
 
     /*转入当前支部日期*/
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
-    @ApiModelProperty(value = "转入当前支部日期",name = "timeForJoinThis")
-    private Date timeForJoinThis;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+//    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
+//    @ApiModelProperty(value = "转入当前支部日期",name = "timeForJoinThis")
+//    private Date timeForJoinThis;
 
     /*转出党支部名称*/
 //    @ApiModelProperty(value = "转出党支部名称",name = "nameBeforeJoin")

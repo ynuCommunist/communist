@@ -19,3 +19,6 @@ NewsImageLocation: ./src/main/resources/NewsImage/
 HomepageImageUrl: http://localhost:8080/NewsImage/HomepageImage/
 HomepageImageResources: file:/home/icesource/项目/党员管理系统/communist-server/src/main/resources/NewsImage/HomepageImage/
 HomepageImageLocation: ./src/main/resources/NewsImage/HomepageImage/
+
+server:
+  port: 8081
